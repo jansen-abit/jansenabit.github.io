@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Janesyn Abit — Data Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0f0f;
+      --ink-light: #4a4a4a;
+      --ink-faint: #9a9a9a;
+      --paper: #f7f5f0;
+      --paper-warm: #eeeae2;
+      --accent: #1a56db;
+      --accent-soft: #e8eefb;
+      --rule: #e0dbd0;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(247,245,240,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-light);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 4rem;
+      padding-top: 5rem;
+      gap: 4rem;
+    }
+    .hero-left { max-width: 560px; }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem; height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--ink-light);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 44ch;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-secondary:hover { border-color: var(--ink); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+    .stat-card {
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      min-width: 220px;
+      animation: floatIn 0.8s ease both;
+    }
+    .stat-card:nth-child(2) { animation-delay: 0.15s; margin-right: 3rem; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 0.25rem;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+    section:nth-child(even) { background: var(--paper-warm); }
+
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1.5rem;
+    }
+    .section-num {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--ink-light);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .about-focus { }
+    .focus-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .focus-item:first-child { border-top: 1px solid var(--rule); }
+    .focus-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .focus-desc {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+    }
+
+    /* EXPERIENCE */
+    .experience-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .exp-item:first-child { border-top: 1px solid var(--rule); }
+    .exp-meta { }
+    .exp-company {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .exp-period {
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      margin-top: 0.25rem;
+    }
+    .exp-content { }
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .skill-group {
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--paper);
+    }
+    .skill-group-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .skill-list { list-style: none; }
+    .skill-list li {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      padding: 0.35rem 0;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .skill-list li::before {
+      content: '—';
+      color: var(--rule);
+      font-size: 0.7rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .project-card {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 2rem;
+      background: var(--paper);
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project-num {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    /* CERTIFICATIONS */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .cert-card {
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .cert-issuer {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .cert-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    .cert-year {
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    /* CONTACT */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-text h3 {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .contact-text p {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      line-height: 1.8;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent-soft);
+      border-radius: 2px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .contact-link-label { font-weight: 500; }
+    .contact-link-value { color: var(--ink-faint); font-size: 0.8rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p { font-size: 0.8rem; color: var(--ink-faint); }
+
+    /* FADE IN ANIMATION */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+      .hero-right { align-items: flex-start; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid, .contact-inner, .exp-item { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid, .projects-grid, .cert-list { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Janesyn Abit</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Data Engineering &amp; Governance</div>
+      <h1>Turning raw data into <em>reliable</em> infrastructure</h1>
+      <p class="hero-bio">
+        Senior Data Engineer with 10+ years of experience designing, orchestrating, and supporting data pipelines and analytical data models. Proven track record transforming complex, fragmented data into scalable, reusable datasets using modern ETL tools across multi-cloud environments.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="#projects" class="btn btn-secondary">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Microsoft Certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">Multi</div>
+        <div class="stat-label">Cloud Platforms</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header fade-up">
+      <span class="section-num">01</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>
+          I'm Janesyn Abit, a Data Engineering and Governance Associate Manager with a decade-long career building the backbone of modern data platforms. I specialise in designing end-to-end data pipelines that are resilient, observable, and built to scale.
+        </p>
+        <p>
+          My work sits at the intersection of engineering and governance — not just moving data, but ensuring it is trusted, documented, and reusable across the organisation. I've delivered solutions for enterprise clients at both Accenture and Telstra, operating across AWS, Azure, and GCP environments.
+        </p>
+        <p>
+          I'm passionate about data quality, lineage, and the invisible engineering that makes analytics reliable for everyone downstream.
+        </p>
+      </div>
+      <div class="about-focus">
+        <div class="focus-item">
+          <div class="focus-title">Pipeline Architecture</div>
+          <div class="focus-desc">Designing scalable batch and streaming pipelines using Spark, Airflow, and dbt across multi-cloud environments.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-title">Data Governance</div>
+          <div class="focus-desc">Implementing data catalogues, lineage tracking, and quality frameworks that build trust in enterprise data assets.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-title">Analytical Modelling</div>
+          <div class="focus-desc">Transforming fragmented source data into clean, reusable dimensional models and Snowflake data warehouses.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-title">Cloud Engineering</div>
+          <div class="focus-desc">Deploying and optimising data infrastructure on AWS, Azure, and GCP — selecting the right tool for the workload.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header fade-up">
+      <span class="section-num">02</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="experience-list">
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">Accenture</div>
+          <div class="exp-period">Senior Role</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Business Specialist / Data Engineer</div>
+          <p class="exp-desc">
+            Designed and maintained enterprise-grade data pipelines for large-scale clients, delivering end-to-end ETL solutions across cloud platforms. Collaborated with business stakeholders to translate complex requirements into scalable data models and governance frameworks. Led data quality initiatives and contributed to the implementation of data cataloguing and lineage tooling.
+          </p>
+          <div class="exp-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Spark</span>
+            <span class="tag">Azure</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">dbt</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">Telstra</div>
+          <div class="exp-period">Senior Role</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Business Specialist / Data Engineer</div>
+          <p class="exp-desc">
+            Supported and extended Telstra's core data platform, building reliable pipelines that served analytical and operational consumers. Worked across data ingestion, transformation, and serving layers — ensuring SLA compliance, pipeline observability, and data integrity at enterprise scale. Contributed to data governance policies and metadata management practices.
+          </p>
+          <div class="exp-tags">
+            <span class="tag">Snowflake</span>
+            <span class="tag">Airflow</span>
+            <span class="tag">AWS</span>
+            <span class="tag">GCP</span>
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header fade-up">
+      <span class="section-num">03</span>
+      <h2>Skills &amp; Tech Stack</h2>
+    </div>
+    <div class="skills-grid fade-up">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>SQL</li>
+          <li>Bash / Shell</li>
+          <li>YAML / JSON</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data Processing</div>
+        <ul class="skill-list">
+          <li>Apache Spark</li>
+          <li>Databricks</li>
+          <li>dbt (data build tool)</li>
+          <li>Apache Airflow</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Cloud Platforms</div>
+        <ul class="skill-list">
+          <li>AWS (S3, Glue, Redshift)</li>
+          <li>Azure (ADF, Synapse, ADLS)</li>
+          <li>GCP (BigQuery, Dataflow)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data Warehousing</div>
+        <ul class="skill-list">
+          <li>Snowflake</li>
+          <li>Azure Synapse</li>
+          <li>Amazon Redshift</li>
+          <li>Google BigQuery</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Governance &amp; Quality</div>
+        <ul class="skill-list">
+          <li>Data Cataloguing</li>
+          <li>Lineage Tracking</li>
+          <li>Data Quality Frameworks</li>
+          <li>Metadata Management</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Visualisation &amp; BI</div>
+        <ul class="skill-list">
+          <li>Power BI</li>
+          <li>Microsoft SQL Server</li>
+          <li>Azure Database Admin</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header fade-up">
+      <span class="section-num">04</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="projects-grid fade-up">
+      <div class="project-card">
+        <div class="project-num">Project 01</div>
+        <div class="project-title">Enterprise Data Lakehouse Migration</div>
+        <p class="project-desc">
+          Led the migration of a legacy on-premises data warehouse to a cloud-native lakehouse architecture on Azure Databricks and ADLS Gen2. Delivered a unified data layer supporting both BI reporting and ML feature engineering workloads.
+        </p>
+        <div class="project-stack">
+          <span class="tag">Databricks</span>
+          <span class="tag">Azure</span>
+          <span class="tag">PySpark</span>
+          <span class="tag">Delta Lake</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Project 02</div>
+        <div class="project-title">Real-Time Telco Event Pipeline</div>
+        <p class="project-desc">
+          Designed and deployed a streaming ingestion pipeline processing millions of network events per hour. Enabled near-real-time operational dashboards and customer usage analytics on GCP using Pub/Sub and Dataflow.
+        </p>
+        <div class="project-stack">
+          <span class="tag">GCP</span>
+          <span class="tag">Pub/Sub</span>
+          <span class="tag">Dataflow</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Project 03</div>
+        <div class="project-title">Snowflake Data Governance Framework</div>
+        <p class="project-desc">
+          Built a data governance layer on Snowflake including automated data quality checks, column-level lineage documentation, and a metadata-driven dbt model registry. Reduced data incidents by establishing clear ownership and SLAs.
+        </p>
+        <div class="project-stack">
+          <span class="tag">Snowflake</span>
+          <span class="tag">dbt</span>
+          <span class="tag">Airflow</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Project 04</div>
+        <div class="project-title">Multi-Cloud ETL Orchestration Platform</div>
+        <p class="project-desc">
+          Architected a centralised Airflow-based orchestration platform managing 300+ DAGs across AWS, Azure, and GCP. Introduced dependency management, alerting, and SLA monitoring as standard across all pipelines.
+        </p>
+        <div class="project-stack">
+          <span class="tag">Airflow</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Azure</span>
+          <span class="tag">GCP</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Project 05</div>
+        <div class="project-title">Power BI Enterprise Reporting Suite</div>
+        <p class="project-desc">
+          Developed a suite of Power BI dashboards backed by a dimensional model in Azure Synapse. Served 200+ business users with self-service analytics across finance, operations, and customer domains.
+        </p>
+        <div class="project-stack">
+          <span class="tag">Power BI</span>
+          <span class="tag">Synapse</span>
+          <span class="tag">SQL</span>
+          <span class="tag">dbt</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Project 06</div>
+        <div class="project-title">AWS Data Quality Monitoring System</div>
+        <p class="project-desc">
+          Built an automated data quality monitoring system on AWS using Glue and Lambda, covering completeness, freshness, and schema drift detection. Integrated with PagerDuty for on-call alerting on critical pipeline failures.
+        </p>
+        <div class="project-stack">
+          <span class="tag">AWS Glue</span>
+          <span class="tag">Lambda</span>
+          <span class="tag">Redshift</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-header fade-up">
+      <span class="section-num">05</span>
+      <h2>Certifications</h2>
+    </div>
+    <div class="cert-list fade-up">
+      <div class="cert-card">
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-name">MCSA: SQL 2016 Database Development</div>
+        <div class="cert-year">Achieved 2021</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-name">Power BI Data Analyst Associate</div>
+        <div class="cert-year">Achieved 2022</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-name">Azure Database Administrator Associate</div>
+        <div class="cert-year">Achieved 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header fade-up">
+      <span class="section-num">06</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-inner fade-up">
+      <div class="contact-text">
+        <h3>Let's build something great together.</h3>
+        <p>
+          I'm open to senior data engineering roles, consulting engagements, and collaborative projects — particularly where data governance, pipeline reliability, or cloud architecture are at the core.
+        </p>
+        <p style="margin-top:1rem;">
+          Reach out via email or connect with me on LinkedIn and GitHub.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:jansenabit@gmail.com" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">jansenabit@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/janesyn-abit-18a390159" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">janesyn-abit-18a390159</div>
+          </div>
+        </a>
+        <a href="https://github.com/jansen-abit" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <div>
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-value">github.com/jansen-abit</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Janesyn Abit. All rights reserved.</p>
+    <p>Data Engineering &amp; Governance Associate Manager</p>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
