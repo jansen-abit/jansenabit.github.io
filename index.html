@@ -736,6 +736,25 @@
           <span class="tag">Python</span>
         </div>
       </div>
+      <div class="project-card" style="border-color: var(--accent); position: relative;">
+        <div style="position:absolute; top:1.25rem; right:1.25rem; font-size:0.65rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:0.25rem 0.6rem; border-radius:2px;">Live Project</div>
+        <div class="project-num">Project 07</div>
+        <div class="project-title">NOAA Weather Pipeline — Databricks Medallion Architecture</div>
+        <p class="project-desc">
+          End-to-end data pipeline ingesting live weather forecast data from the NOAA public API across four US cities. Built on Databricks Serverless Compute using managed Delta tables throughout — Bronze raw ingest, Silver parse and cleanse, Gold daily aggregations, and a SQL serving layer with a live dashboard. Deliberately avoids legacy DBFS patterns in favour of Unity Catalog managed tables.
+        </p>
+        <div class="project-stack">
+          <span class="tag">Databricks</span>
+          <span class="tag">Delta Lake</span>
+          <span class="tag">PySpark</span>
+          <span class="tag">Spark SQL</span>
+          <span class="tag">Python</span>
+        </div>
+        <a href="https://github.com/jansen-abit/weather-pipeline-databricks" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; margin-top:1.25rem; font-size:0.75rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:0.1rem; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
     </div>
   </section>
 
@@ -781,13 +800,13 @@
         </p>
       </div>
       <div class="contact-links">
-        <a href="mailto:jansenabit@gmail.com" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#dfb5beb1acbab1bebdb6ab9fb8b2beb6b3f1bcb0b2" class="contact-link">
           <div class="contact-link-icon">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div>
             <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">jansenabit@gmail.com</div>
+            <div class="contact-link-value"><span class="__cf_email__" data-cfemail="cba1aaa5b8aea5aaa9a2bf8baca6aaa2a7e5a8a4a6">[email&#160;protected]</span></div>
           </div>
         </a>
         <a href="https://www.linkedin.com/in/janesyn-abit-18a390159" target="_blank" rel="noopener" class="contact-link">
@@ -818,14 +837,6 @@
     <p>Data Engineering &amp; Governance Associate Manager</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Scroll fade-in
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
