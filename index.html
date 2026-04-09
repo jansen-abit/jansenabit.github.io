@@ -655,90 +655,19 @@
       <span class="section-num">04</span>
       <h2>Projects</h2>
     </div>
-    <div class="projects-grid fade-up">
-      <div class="project-card">
-        <div class="project-num">Project 01</div>
-        <div class="project-title">Enterprise Data Lakehouse Migration</div>
-        <p class="project-desc">
-          Led the migration of a legacy on-premises data warehouse to a cloud-native lakehouse architecture on Azure Databricks and ADLS Gen2. Delivered a unified data layer supporting both BI reporting and ML feature engineering workloads.
-        </p>
-        <div class="project-stack">
-          <span class="tag">Databricks</span>
-          <span class="tag">Azure</span>
-          <span class="tag">PySpark</span>
-          <span class="tag">Delta Lake</span>
-        </div>
+    <!-- PHASE 1: OPEN SOURCE -->
+    <div style="margin-bottom:1rem;">
+      <div style="font-size:0.7rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="display:inline-block; width:1.5rem; height:1px; background:var(--accent);"></span>
+        Phase 1 — Open Source
       </div>
-      <div class="project-card">
-        <div class="project-num">Project 02</div>
-        <div class="project-title">Real-Time Telco Event Pipeline</div>
-        <p class="project-desc">
-          Designed and deployed a streaming ingestion pipeline processing millions of network events per hour. Enabled near-real-time operational dashboards and customer usage analytics on GCP using Pub/Sub and Dataflow.
-        </p>
-        <div class="project-stack">
-          <span class="tag">GCP</span>
-          <span class="tag">Pub/Sub</span>
-          <span class="tag">Dataflow</span>
-          <span class="tag">BigQuery</span>
-          <span class="tag">Python</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-num">Project 03</div>
-        <div class="project-title">Snowflake Data Governance Framework</div>
-        <p class="project-desc">
-          Built a data governance layer on Snowflake including automated data quality checks, column-level lineage documentation, and a metadata-driven dbt model registry. Reduced data incidents by establishing clear ownership and SLAs.
-        </p>
-        <div class="project-stack">
-          <span class="tag">Snowflake</span>
-          <span class="tag">dbt</span>
-          <span class="tag">Airflow</span>
-          <span class="tag">SQL</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-num">Project 04</div>
-        <div class="project-title">Multi-Cloud ETL Orchestration Platform</div>
-        <p class="project-desc">
-          Architected a centralised Airflow-based orchestration platform managing 300+ DAGs across AWS, Azure, and GCP. Introduced dependency management, alerting, and SLA monitoring as standard across all pipelines.
-        </p>
-        <div class="project-stack">
-          <span class="tag">Airflow</span>
-          <span class="tag">AWS</span>
-          <span class="tag">Azure</span>
-          <span class="tag">GCP</span>
-          <span class="tag">Python</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-num">Project 05</div>
-        <div class="project-title">Power BI Enterprise Reporting Suite</div>
-        <p class="project-desc">
-          Developed a suite of Power BI dashboards backed by a dimensional model in Azure Synapse. Served 200+ business users with self-service analytics across finance, operations, and customer domains.
-        </p>
-        <div class="project-stack">
-          <span class="tag">Power BI</span>
-          <span class="tag">Synapse</span>
-          <span class="tag">SQL</span>
-          <span class="tag">dbt</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-num">Project 06</div>
-        <div class="project-title">AWS Data Quality Monitoring System</div>
-        <p class="project-desc">
-          Built an automated data quality monitoring system on AWS using Glue and Lambda, covering completeness, freshness, and schema drift detection. Integrated with PagerDuty for on-call alerting on critical pipeline failures.
-        </p>
-        <div class="project-stack">
-          <span class="tag">AWS Glue</span>
-          <span class="tag">Lambda</span>
-          <span class="tag">Redshift</span>
-          <span class="tag">Python</span>
-        </div>
+      <p style="font-size:0.88rem; color:var(--ink-light); margin-bottom:2rem;">NOAA Weather data pipeline built end-to-end on free-tier accounts.</p>
+    </div>
+    <div class="projects-grid fade-up" style="margin-bottom:4rem;">
       <div class="project-card" style="border-color: var(--accent); position: relative;">
         <div style="position:absolute; top:1.25rem; right:1.25rem; font-size:0.65rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:0.25rem 0.6rem; border-radius:2px;">Live Project</div>
-        <div class="project-num">Project 07</div>
-        <div class="project-title">NOAA Weather Pipeline — Databricks Medallion Architecture</div>
+        <div class="project-num">Project 01</div>
+        <div class="project-title">NOAA Weather Pipeline — Databricks</div>
         <p class="project-desc">
           End-to-end data pipeline ingesting live weather forecast data from the NOAA public API across four US cities. Built on Databricks Serverless Compute using managed Delta tables throughout — Bronze raw ingest, Silver parse and cleanse, Gold daily aggregations, and a SQL serving layer with a live dashboard. Deliberately avoids legacy DBFS patterns in favour of Unity Catalog managed tables.
         </p>
@@ -753,6 +682,78 @@
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           View on GitHub
         </a>
+      </div>
+      <div class="project-card" style="border-color: var(--accent); position: relative;">
+        <div style="position:absolute; top:1.25rem; right:1.25rem; font-size:0.65rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:0.25rem 0.6rem; border-radius:2px;">Live Project</div>
+        <div class="project-num">Project 02</div>
+        <div class="project-title">NOAA Weather Pipeline — Snowflake</div>
+        <p class="project-desc">
+          End-to-end data pipeline in Snowflake processing NOAA weather forecast data across four US cities. Built a RAW → CLEAN → SERVING medallion architecture using internal stages, VARIANT JSON parsing, and typed transformations. Includes a published Snowsight dashboard with temperature trends, rain risk, and detail views. Demonstrates cross-platform data movement from Databricks to Snowflake.
+        </p>
+        <div class="project-stack">
+          <span class="tag">Snowflake</span>
+          <span class="tag">SQL</span>
+          <span class="tag">JSON</span>
+          <span class="tag">Snowsight</span>
+          <span class="tag">Databricks</span>
+        </div>
+        <a href="https://github.com/jansen-abit/weather-pipeline-snowflake" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:0.4rem; margin-top:1.25rem; font-size:0.75rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:0.1rem; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- PHASE 2: CLOUD VENDORS -->
+    <div style="margin-bottom:1rem;">
+      <div style="font-size:0.7rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="display:inline-block; width:1.5rem; height:1px; background:var(--ink-faint);"></span>
+        Phase 2 — Cloud Vendors
+      </div>
+      <p style="font-size:0.88rem; color:var(--ink-faint); margin-bottom:2rem;">Same NOAA pipeline rebuilt on each major cloud platform's native services.</p>
+    </div>
+    <div class="projects-grid fade-up">
+      <div class="project-card" style="opacity:0.6; position:relative;">
+        <div style="position:absolute; top:1.25rem; right:1.25rem; font-size:0.65rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-faint); background:var(--paper-warm); padding:0.25rem 0.6rem; border-radius:2px;">Coming Soon</div>
+        <div class="project-num">Project 03</div>
+        <div class="project-title">NOAA Weather Pipeline — GCP</div>
+        <p class="project-desc">
+          Cloud-native pipeline using Cloud Storage, Dataflow, BigQuery, and Looker Studio.
+        </p>
+        <div class="project-stack">
+          <span class="tag">GCP</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">Dataflow</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="project-card" style="opacity:0.6; position:relative;">
+        <div style="position:absolute; top:1.25rem; right:1.25rem; font-size:0.65rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-faint); background:var(--paper-warm); padding:0.25rem 0.6rem; border-radius:2px;">Coming Soon</div>
+        <div class="project-num">Project 04</div>
+        <div class="project-title">NOAA Weather Pipeline — Azure</div>
+        <p class="project-desc">
+          Cloud-native pipeline using Data Factory, ADLS Gen2, Synapse Analytics, and Power BI.
+        </p>
+        <div class="project-stack">
+          <span class="tag">Azure</span>
+          <span class="tag">Synapse</span>
+          <span class="tag">Data Factory</span>
+          <span class="tag">Power BI</span>
+        </div>
+      </div>
+      <div class="project-card" style="opacity:0.6; position:relative;">
+        <div style="position:absolute; top:1.25rem; right:1.25rem; font-size:0.65rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-faint); background:var(--paper-warm); padding:0.25rem 0.6rem; border-radius:2px;">Coming Soon</div>
+        <div class="project-num">Project 05</div>
+        <div class="project-title">NOAA Weather Pipeline — AWS</div>
+        <p class="project-desc">
+          Cloud-native pipeline using S3, Glue, Redshift, and QuickSight.
+        </p>
+        <div class="project-stack">
+          <span class="tag">AWS</span>
+          <span class="tag">Glue</span>
+          <span class="tag">Redshift</span>
+          <span class="tag">QuickSight</span>
+        </div>
       </div>
     </div>
   </section>
